@@ -1,0 +1,88 @@
+.button{
+    -fx-background-image: url('knob.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-radius: 100%;
+    -fx-border-radius: 100%;
+    -fx-background-repeat: no-repeat;
+    /*-fx-background-position: 50% 58%;*/
+    -fx-background-position: center;
+}
+#main {
+    -fx-background-image: url('texture.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#KLU {
+    -fx-background-image: url('template.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#Program{
+    -fx-background-image: url('P-letter.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#Burner{
+    -fx-background-image: url('palnik.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#FireLeft{
+    -fx-background-image: url('ogien.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#FireLeftSmall{
+    -fx-background-image: url('ogien.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#FireRight{
+    -fx-background-image: url('ogien.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#FireRightSmall{
+    -fx-background-image: url('ogien.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+
+
+#Temperature{
+    -fx-background-image: url('temperature.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#OvenCenter{
+    -fx-background-image: url('oven.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#OvenCenterLight{
+    -fx-background-image: url('oven_light.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#OvenUpper{
+    -fx-background-image: url('chwyt.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#OvenLower{
+    -fx-background-image: url('oven_down.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+#GasStove{
+    -fx-background-image: url('stove.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-size: cover;
+}
+
+.label{
+    -fx-font-family: 'digital-7';
+    -fx-background-color: black;
+    -fx-text-fill: red;
+    -fx-text-alignment: center
+}

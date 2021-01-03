@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" prefHeight="583.0" prefWidth="547.0" stylesheets="@css.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane fx:id="main" prefHeight="638.0" prefWidth="547.0">
+         <children>
+            <VBox layoutX="101.0" layoutY="-18.0" prefHeight="672.0" prefWidth="547.0" AnchorPane.bottomAnchor="-70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-18.0">
+               <children>
+                  <HBox fx:id="GasStove" prefHeight="110.0" prefWidth="547.0">
+                     <children>
+                        <Pane prefHeight="198.0" prefWidth="274.0">
+                           <children>
+                              <Pane fx:id="Burner" layoutX="25.0" layoutY="57.0" prefHeight="47.0" prefWidth="207.0">
+                                 <children>
+                                    <Pane fx:id="FireLeft" layoutX="42.0" layoutY="-30.0" prefHeight="61.0" prefWidth="124.0" visible="false" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="70.0" prefWidth="278.0">
+                           <children>
+                              <Pane fx:id="Burner" layoutX="47.0" layoutY="57.0" prefHeight="47.0" prefWidth="207.0">
+                                 <children>
+                                    <Pane fx:id="FireRight" layoutX="42.0" layoutY="-30.0" prefHeight="61.0" prefWidth="124.0" visible="false" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="ControlPanel" prefHeight="103.0" prefWidth="547.0">
+                     <children>
+                        <GridPane prefHeight="96.0" prefWidth="68.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Pane prefHeight="106.0" prefWidth="61.0">
+                                 <children>
+                                    <Button fx:id="KnobLeftUp" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="96.0" prefWidth="68.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane prefHeight="106.0" prefWidth="61.0">
+                                 <children>
+                                    <Button fx:id="KnobLeftDown" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" rotate="-90.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="96.0" prefWidth="68.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane prefHeight="106.0" prefWidth="61.0">
+                                 <children>
+                                    <Button fx:id="KnobOvenProgram" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Pane fx:id="Program" layoutX="27.0" layoutY="5.0" prefHeight="29.0" prefWidth="18.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="86.0" prefWidth="144.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label fx:id="screen" alignment="CENTER" contentDisplay="CENTER" prefHeight="79.0" prefWidth="143.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="96.0" prefWidth="68.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane prefHeight="106.0" prefWidth="61.0">
+                                 <children>
+                                    <Button fx:id="KnobOvenTemperature" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Pane fx:id="Temperature" layoutX="19.0" layoutY="1.0" prefHeight="37.0" prefWidth="27.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="96.0" prefWidth="68.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane prefHeight="106.0" prefWidth="61.0">
+                                 <children>
+                                    <Button fx:id="KnobRightDown" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" rotate="180.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="96.0" prefWidth="68.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane prefHeight="106.0" prefWidth="61.0">
+                                 <children>
+                                    <Button fx:id="KnobRightUp" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" rotate="90.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </HBox>
+                  <BorderPane prefHeight="398.0" prefWidth="547.0">
+                     <center>
+                        <StackPane prefHeight="146.0" prefWidth="247.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Pane fx:id="OvenCenter" prefHeight="209.0" prefWidth="447.0" />
+                              <Pane fx:id="OvenCenterLight" prefHeight="447.0" prefWidth="447.0" visible="false" />
+                           </children>
+                        </StackPane>
+                     </center>
+                     <top>
+                        <Pane fx:id="OvenUpper" prefHeight="83.0" prefWidth="547.0" BorderPane.alignment="CENTER" />
+                     </top>
+                     <left>
+                        <Pane prefHeight="210.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Pane prefHeight="210.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+                     </right>
+                     <bottom>
+                        <Pane fx:id="OvenLower" prefHeight="78.0" prefWidth="547.0" BorderPane.alignment="CENTER" />
+                     </bottom></BorderPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
