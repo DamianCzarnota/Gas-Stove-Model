@@ -13,6 +13,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Kuchenka Gazowa");
         primaryStage.setScene(new Scene(root, 547, 583));
+        primaryStage.setMinHeight(583);
+        primaryStage.setMinWidth(547);
 
         primaryStage.show();
     }

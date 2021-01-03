@@ -76,27 +76,15 @@ public class Controller implements Initializable {
 
         if(b.getId().equals(KnobLeftUp.getId())){
             leftUpFlame = fire(FireLeft,KnobLeftUp,KnobLeftDown,leftUpFlame,LeftUp);
-            if(leftUpFlame==true){
-                LeftUp.setVolume((-KnobLeftUp.getRotate())*soundLimit);
-            }
         }
         if(b.getId().equals(KnobLeftDown.getId())){
             leftDownFlame = fire(FireLeft,KnobLeftDown,KnobLeftUp,leftDownFlame,LeftDown);
-            if(leftDownFlame==true){
-                LeftDown.setVolume(((-KnobLeftDown.getRotate())*soundLimit));
-            }
         }
         if(b.getId().equals(KnobRightDown.getId())){
             rightDownFlame = fire(FireRight,KnobRightDown,KnobRightUp,rightDownFlame,RightDown);
-            if(rightDownFlame==true){
-                RightDown.setVolume((-KnobRightDown.getRotate())*soundLimit);
-            }
         }
         if(b.getId().equals(KnobRightUp.getId())){
             rightUpFlame = fire(FireRight,KnobRightUp,KnobRightDown,rightUpFlame,RightUp);
-            if(rightUpFlame==true){
-                RightUp.setVolume((-KnobRightUp.getRotate())*soundLimit);
-            }
         }
 
 
@@ -141,6 +129,7 @@ public class Controller implements Initializable {
                 isOnFire=true;
                 sound.play();
             }
+            sound.setVolume((-burner.getRotate())*soundLimit);
         }else{
             if(oppositeBurner.getRotate()==0)
                 fire.setVisible(false);
