@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -25,7 +29,16 @@
                            <children>
                               <Pane fx:id="Burner" layoutX="25.0" layoutY="57.0" prefHeight="47.0" prefWidth="207.0">
                                  <children>
-                                    <Pane fx:id="FireLeft" layoutX="42.0" layoutY="-30.0" prefHeight="61.0" prefWidth="124.0" visible="false" />
+                                    <ImageView fx:id="FireLeftUpper" fitHeight="37.0" fitWidth="83.0" layoutX="63.0" layoutY="-11.0" pickOnBounds="true" visible="false">
+                                       <image>
+                                          <Image url="@ogien_2.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="FireLeftLower" fitHeight="37.0" fitWidth="68.0" layoutX="72.0" layoutY="-11.0" pickOnBounds="true" visible="false">
+                                       <image>
+                                          <Image url="@ogien.png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </Pane>
                            </children>
@@ -34,7 +47,28 @@
                            <children>
                               <Pane fx:id="Burner" layoutX="47.0" layoutY="57.0" prefHeight="47.0" prefWidth="207.0">
                                  <children>
-                                    <Pane fx:id="FireRight" layoutX="42.0" layoutY="-30.0" prefHeight="61.0" prefWidth="124.0" visible="false" />
+                                    <ImageView fx:id="FireRightUpper" fitHeight="37.0" fitWidth="83.0" layoutX="62.0" layoutY="-11.0" nodeOrientation="INHERIT" pickOnBounds="true" visible="false">
+                                       <image>
+                                          <Image url="@ogien_2.png" />
+                                       </image>
+                                       <viewport>
+                                          <Rectangle2D height="123.0" />
+                                       </viewport>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </ImageView>
+                                    <ImageView fx:id="FireRightLower" fitHeight="37.0" fitWidth="61.0" layoutX="73.0" layoutY="-11.0" nodeOrientation="INHERIT" pickOnBounds="true" visible="false">
+                                       <image>
+                                          <Image url="@ogien.png" />
+                                       </image>
+                                       <viewport>
+                                          <Rectangle2D height="123.0" />
+                                       </viewport>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </ImageView>
                                  </children>
                               </Pane>
                            </children>
@@ -53,7 +87,7 @@
                            <children>
                               <Pane prefHeight="106.0" prefWidth="61.0">
                                  <children>
-                                    <Button fx:id="KnobLeftUp" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Button fx:id="KnobLeftUp" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" prefHeight="61.0" prefWidth="61.0" />
                                     <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" />
                                  </children>
                               </Pane>
@@ -69,7 +103,7 @@
                            <children>
                               <Pane prefHeight="106.0" prefWidth="61.0">
                                  <children>
-                                    <Button fx:id="KnobLeftDown" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Button fx:id="KnobLeftDown" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" prefHeight="61.0" prefWidth="61.0" />
                                     <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" rotate="-90.0" />
                                  </children>
                               </Pane>
@@ -85,7 +119,7 @@
                            <children>
                               <Pane prefHeight="106.0" prefWidth="61.0">
                                  <children>
-                                    <Button fx:id="KnobOvenProgram" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Button fx:id="KnobOvenProgram" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" prefHeight="61.0" prefWidth="61.0" />
                                     <Pane fx:id="Program" layoutX="27.0" layoutY="5.0" prefHeight="29.0" prefWidth="18.0" />
                                  </children>
                               </Pane>
@@ -116,7 +150,7 @@
                            <children>
                               <Pane prefHeight="106.0" prefWidth="61.0">
                                  <children>
-                                    <Button fx:id="KnobOvenTemperature" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Button fx:id="KnobOvenTemperature" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" prefHeight="61.0" prefWidth="61.0" />
                                     <Pane fx:id="Temperature" layoutX="19.0" layoutY="1.0" prefHeight="37.0" prefWidth="27.0" />
                                  </children>
                               </Pane>
@@ -132,7 +166,7 @@
                            <children>
                               <Pane prefHeight="106.0" prefWidth="61.0">
                                  <children>
-                                    <Button fx:id="KnobRightDown" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Button fx:id="KnobRightDown" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" prefHeight="61.0" prefWidth="61.0" />
                                     <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" rotate="180.0" />
                                  </children>
                               </Pane>
@@ -148,7 +182,7 @@
                            <children>
                               <Pane prefHeight="106.0" prefWidth="61.0">
                                  <children>
-                                    <Button fx:id="KnobRightUp" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" onMouseReleased="#GetRotation" prefHeight="61.0" prefWidth="61.0" />
+                                    <Button fx:id="KnobRightUp" layoutX="4.0" layoutY="39.0" mnemonicParsing="false" onMouseDragged="#Rotate" onMousePressed="#RotateInit" prefHeight="61.0" prefWidth="61.0" />
                                     <Pane fx:id="KLU" layoutX="20.0" layoutY="5.0" prefHeight="27.0" prefWidth="29.0" rotate="90.0" />
                                  </children>
                               </Pane>

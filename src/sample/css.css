@@ -27,27 +27,6 @@
     -fx-background-size: 100% 100%;
     -fx-background-size: cover;
 }
-#FireLeft{
-    -fx-background-image: url('ogien.png');
-    -fx-background-size: 100% 100%;
-    -fx-background-size: cover;
-}
-#FireLeftSmall{
-    -fx-background-image: url('ogien.png');
-    -fx-background-size: 100% 100%;
-    -fx-background-size: cover;
-}
-#FireRight{
-    -fx-background-image: url('ogien.png');
-    -fx-background-size: 100% 100%;
-    -fx-background-size: cover;
-}
-#FireRightSmall{
-    -fx-background-image: url('ogien.png');
-    -fx-background-size: 100% 100%;
-    -fx-background-size: cover;
-}
-
 
 #Temperature{
     -fx-background-image: url('temperature.png');
