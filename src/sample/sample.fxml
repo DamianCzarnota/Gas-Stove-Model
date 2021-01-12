@@ -34,7 +34,7 @@
                                           <Image url="@ogien_2.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="FireLeftLower" fitHeight="37.0" fitWidth="68.0" layoutX="72.0" layoutY="-11.0" pickOnBounds="true" visible="false">
+                                    <ImageView fx:id="FireLeftLower" fitHeight="37.0" fitWidth="67.0" layoutX="71.0" layoutY="-11.0" pickOnBounds="true" visible="false">
                                        <image>
                                           <Image url="@ogien.png" />
                                        </image>

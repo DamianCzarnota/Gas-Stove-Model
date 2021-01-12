@@ -130,9 +130,10 @@ public class Controller implements Initializable {
             if(isOnFire==false){
                 isOnFire=true;
                 sound.play();
+                sparke.play();
             }
             if(-burner.getRotate()<=90) {
-                fire.setY(0.5*burner.getRotate()+38);
+                fire.setY(0.5*burner.getRotate()+39);
                 fire.setFitHeight(-burner.getRotate() + (burner.getRotate() / 2));
             }
             else {
