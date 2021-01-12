@@ -12,10 +12,10 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
+import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
@@ -23,8 +23,10 @@ public class Controller implements Initializable {
 
 
     @FXML
-    public Pane FireLeft;
-    public Pane FireRight;
+    public ImageView FireLeftUpper;
+    public ImageView FireLeftLower;
+    public ImageView FireRightUpper;
+    public ImageView FireRightLower;
     public Button KnobLeftUp;
     public Button KnobLeftDown;
     public Button KnobOvenProgram;
@@ -35,10 +37,10 @@ public class Controller implements Initializable {
     public Pane OvenCenterLight;
     public Label screen;
 
-    private final double limit = 0.7223,lowestTemperature=110,soundLimit=0.005556;
-    private final double Min = -180, Max =0;
-    private double CurrentRotate, MouseX,KnobRotation;
-    private String programs[]={"Tradycyjny","Termoobieg","Rozmrażanie","Grill"};
+    private final double LIMIT = 0.7223, LOWEST_TEMPERATURE =110;
+    private final double MIN = -180, MAX =0;
+    private double CurrentRotate, MouseX;
+    private final String PROGRAMS[]={"Tradycyjny","Termoobieg","Rozmrażanie","Grill"};
     int function=0;
 
     Media ignite,flame;
@@ -64,39 +66,27 @@ public class Controller implements Initializable {
         time.setDaemon(true);
         time.start();
         MouseX=0;
-        KnobRotation=0;
     }
 
     public void Rotate(MouseEvent mouseEvent) {
         Button b = (Button)mouseEvent.getSource();
         double rotation = CurrentRotate + (mouseEvent.getSceneX() - MouseX);
-        if(rotation<Min) rotation=Min;
-        if(rotation>Max) rotation=Max;
+        if(rotation< MIN) rotation= MIN;
+        if(rotation> MAX) rotation= MAX;
         b.setRotate(rotation);
 
         if(b.getId().equals(KnobLeftUp.getId())){
-            leftUpFlame = fire(FireLeft,KnobLeftUp,KnobLeftDown,leftUpFlame,LeftUp);
-            if(leftUpFlame==true){
-                LeftUp.setVolume((-KnobLeftUp.getRotate())*soundLimit);
-            }
+            leftUpFlame = fire(FireLeftUpper,KnobLeftUp,leftUpFlame,LeftUp);
         }
         if(b.getId().equals(KnobLeftDown.getId())){
-            leftDownFlame = fire(FireLeft,KnobLeftDown,KnobLeftUp,leftDownFlame,LeftDown);
-            if(leftDownFlame==true){
-                LeftDown.setVolume(((-KnobLeftDown.getRotate())*soundLimit));
-            }
+            leftDownFlame = fire(FireLeftLower,KnobLeftDown,leftDownFlame,LeftDown);
         }
         if(b.getId().equals(KnobRightDown.getId())){
-            rightDownFlame = fire(FireRight,KnobRightDown,KnobRightUp,rightDownFlame,RightDown);
-            if(rightDownFlame==true){
-                RightDown.setVolume((-KnobRightDown.getRotate())*soundLimit);
-            }
+            rightDownFlame = fire(FireRightLower,KnobRightDown,rightDownFlame,RightDown);
+
         }
         if(b.getId().equals(KnobRightUp.getId())){
-            rightUpFlame = fire(FireRight,KnobRightUp,KnobRightDown,rightUpFlame,RightUp);
-            if(rightUpFlame==true){
-                RightUp.setVolume((-KnobRightUp.getRotate())*soundLimit);
-            }
+            rightUpFlame = fire(FireRightUpper,KnobRightUp,rightUpFlame,RightUp);
         }
 
 
@@ -114,14 +104,14 @@ public class Controller implements Initializable {
                 if(-KnobOvenProgram.getRotate()>135){
                     function=3;
                 }
-                screen.setText((int)(-KnobOvenTemperature.getRotate()* limit +lowestTemperature)+" °C\n"+programs[function]);
+                screen.setText((int)(-KnobOvenTemperature.getRotate()* LIMIT + LOWEST_TEMPERATURE)+" °C\n"+ PROGRAMS[function]);
             }
         }
         if(b.getId().equals(KnobOvenTemperature.getId())){
             if(KnobOvenTemperature.getRotate()!=0){
                 OvenCenter.setVisible(false);
                 OvenCenterLight.setVisible(true);
-                screen.setText((int)(-KnobOvenTemperature.getRotate()*limit+lowestTemperature)+" °C \n"+programs[function]);
+                screen.setText((int)(-KnobOvenTemperature.getRotate()* LIMIT + LOWEST_TEMPERATURE)+" °C \n"+ PROGRAMS[function]);
             }else{
                 OvenCenter.setVisible(true);
                 OvenCenterLight.setVisible(false);
@@ -134,16 +124,27 @@ public class Controller implements Initializable {
 
         }
     }
-    private boolean fire(Pane fire,Button burner,Button oppositeBurner,boolean isOnFire,MediaPlayer sound){
+    private boolean fire(ImageView fire, Button burner,boolean isOnFire, MediaPlayer sound){
         if(burner.getRotate()!=0){
             fire.setVisible(true);
             if(isOnFire==false){
                 isOnFire=true;
                 sound.play();
             }
+            if(-burner.getRotate()<=90) {
+                fire.setY(0.5*burner.getRotate()+38);
+                fire.setFitHeight(-burner.getRotate() + (burner.getRotate() / 2));
+            }
+            else {
+                fire.setY((-burner.getRotate()*(21.0/90.0))-27);
+                fire.setFitHeight((burner.getRotate())*(23.0/90.0) + 68);
+            }
+            if(-burner.getRotate()<=90)
+                sound.setVolume((-burner.getRotate())*(1.0/90.0));
+            else
+                sound.setVolume(((-burner.getRotate())*(-0.75/90.0))+1.75);
         }else{
-            if(oppositeBurner.getRotate()==0)
-                fire.setVisible(false);
+            fire.setVisible(false);
             isOnFire=false;
             sound.stop();
         }
@@ -158,13 +159,6 @@ public class Controller implements Initializable {
         }
         CurrentRotate=b.getRotate();
         MouseX= mouseEvent.getSceneX();
-    }
-
-    public void GetRotation(MouseEvent mouseEvent) {
-        Button b = (Button)mouseEvent.getSource();
-        KnobRotation = ((-b.getRotate())*0.5556);
-        System.out.println(b.getId());
-        System.out.println("Volume: "+(int)KnobRotation + "%");
     }
 }
 class Timer extends Thread{
