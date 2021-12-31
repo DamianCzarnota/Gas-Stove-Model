@@ -1,5 +1,4 @@
 package sample;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,18 +9,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-
-
 import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
-
 public class Controller implements Initializable {
-
-
     @FXML
     public ImageView FireLeftUpper;
     public ImageView FireLeftLower;
@@ -42,9 +36,7 @@ public class Controller implements Initializable {
     private double CurrentRotate, MouseX;
     private final String PROGRAMS[]={"Tradycyjny","Termoobieg","Rozmrażanie","Grill"};
     int function=0;
-
     Media ignite,flame;
-
     MediaPlayer LeftUp,LeftDown,RightUp,RightDown,sparke;
     boolean leftUpFlame=false,leftDownFlame=false,rightDownFlame=false,rightUpFlame=false;
     @Override
@@ -61,20 +53,17 @@ public class Controller implements Initializable {
         RightUp.setOnEndOfMedia(()->{ RightUp.seek(Duration.ZERO); });
         RightDown=new MediaPlayer(flame);
         RightDown.setOnEndOfMedia(()->{ RightDown.seek(Duration.ZERO); });
-
         Timer time = new Timer(screen,KnobOvenTemperature);
         time.setDaemon(true);
         time.start();
         MouseX=0;
     }
-
     public void Rotate(MouseEvent mouseEvent) {
         Button b = (Button)mouseEvent.getSource();
         double rotation = CurrentRotate + (mouseEvent.getSceneX() - MouseX);
         if(rotation< MIN) rotation= MIN;
         if(rotation> MAX) rotation= MAX;
         b.setRotate(rotation);
-
         if(b.getId().equals(KnobLeftUp.getId())){
             leftUpFlame = fire(FireLeftUpper,KnobLeftUp,leftUpFlame,LeftUp);
         }
@@ -83,13 +72,10 @@ public class Controller implements Initializable {
         }
         if(b.getId().equals(KnobRightDown.getId())){
             rightDownFlame = fire(FireRightLower,KnobRightDown,rightDownFlame,RightDown);
-
         }
         if(b.getId().equals(KnobRightUp.getId())){
             rightUpFlame = fire(FireRightUpper,KnobRightUp,rightUpFlame,RightUp);
         }
-
-
         if(b.getId().equals(KnobOvenProgram.getId())){
             if(KnobOvenTemperature.getRotate()!=0){
                 if(-KnobOvenProgram.getRotate()<45){
@@ -121,7 +107,6 @@ public class Controller implements Initializable {
                 else
                     screen.setText(time.getHour()+":"+time.getMinute());
             }
-
         }
     }
     private boolean fire(ImageView fire, Button burner,boolean isOnFire, MediaPlayer sound){
@@ -144,7 +129,6 @@ public class Controller implements Initializable {
                 sound.setVolume((-burner.getRotate())*(1.0/90.0));
             else
                 sound.setVolume(((-burner.getRotate())*(-0.75/90.0))+1.75);
-
         }else{
             fire.setVisible(false);
             isOnFire=false;
@@ -167,14 +151,13 @@ class Timer extends Thread{
     @FXML
     Button temperature;
     Label label;
-
     Timer(Label l,Button temp){
         label=l;
         temperature=temp;
     }
     public void run(){
         try {
-            while (true){
+            while(true){
                 TimeUnit.SECONDS.sleep(1);
                 LocalDateTime time = LocalDateTime.now();
                 String print = new String();
@@ -196,8 +179,7 @@ class Timer extends Thread{
                     }.init(print));
                 }
             }
-
-        } catch (InterruptedException e) {
+        }catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
